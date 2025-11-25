@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Agro Gold</title>
+  </head>
+  <body>
+    <header class="fixed z-50 top-0 w-full" id="mainHeader">
+      <div class="container">
+        <div>
+          <div id="toggle" class="flex items-center py-[20px]">
+            <a href="/">
+              <img
+                src="./img/logo.svg"
+                alt="site-logo"
+                class="w-[180px] lg:w-[240px] h-[66px]"
+              />
+            </a>
+            <nav class="flex ml-auto">
+              <div class="flex items-center">
+                <div class="hidden lg:flex">
+                  <svg
+                    width="50"
+                    height="50"
+                    viewBox="0 0 50 50"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect width="50" height="50" rx="25" fill="#77B75F" />
+                    <g clip-path="url(#clip0_0_1)">
+                      <path
+                        d="M22.1531 17.7687C21.9125 17.1875 21.2781 16.8781 20.6719 17.0437L17.9219 17.7937C17.3781 17.9437 17 18.4375 17 19C17 26.7312 23.2688 33 31 33C31.5625 33 32.0563 32.6218 32.2063 32.0781L32.9563 29.3281C33.1219 28.7218 32.8125 28.0875 32.2312 27.8468L29.2312 26.5968C28.7219 26.3843 28.1313 26.5312 27.7844 26.9593L26.5219 28.5C24.3219 27.4593 22.5406 25.6781 21.5 23.4781L23.0406 22.2187C23.4688 21.8687 23.6156 21.2812 23.4031 20.7718L22.1531 17.7718V17.7687Z"
+                        fill="white"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_0_1">
+                        <rect
+                          width="16"
+                          height="16"
+                          fill="white"
+                          transform="translate(17 17)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <div class="ml-[14px]">
+                    <span
+                      class="flex justify-center gap-[10px] header-callback font-semibold text-[#474747] text-[16px] md:text-[18px] xl:text-[20px]"
+                    >
+                      <a href="tel:+998972731347"
+                        >+998 97 273 13 47 <span>, </span>
+                      </a>
+                      <a href="tel:+998934424101">
+                        +998 93 442 41 01 <span> ,</span></a
+                      >
+                    </span>
+                    <p class="text-[#939393] font-[500] text-[14px]">
+                      г. Ташкент, Яккасарайский р-н, Ш. Руставели 85
+                    </p>
+                  </div>
+
+                  <div
+                    class="w-0 lg:w-[1px] h-[35px] bg-[#939393] mx-[8px] xl:mx-[36px]"
+                  ></div>
+                </div>
+                <!-- lang -->
+                <div class="ml-auto text-end lang-dropdown">
+                  <button class="lang-btn" id="langBtn">
+                    <div class="flex items-center text-[14px] lanBtnVal">
+                      <div id="lanBtnVal">RU</div>
+                      <img src="./img/arrowLang.svg" class="ml-[6px]" alt="" />
+                    </div>
+                  </button>
+                  <div class="lang-menu bg-white" id="langMenu">
+                    <a href="#">RU</a>
+                    <a href="#">EN</a>
+                    <a href="#">UZ</a>
+                  </div>
+                </div>
+
+                <a
+                  href=""
+                  class="hidden lg:block md:px-[20px] xl:px-[32px] py-[18px] bg-[#D24A43] text-white font-semibold text-[12px] uppercase rounded-[50px] ml-[40px] border-2 border-[#D24A43] hover:bg-white hover:text-[#D24A43] transition-all duration-500 ease"
+                  >Написать нам</a
+                >
+              </div>
+            </nav>
+
+            <!-- Burger Button -->
+            <div
+              class="burger w-[50px] h-[50px] rounded-full bg-[#77B75F] ml-4 text-white"
+              id="burger"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <ul class="my-[42px] text-white hidden lg:flex items-center gap-25 headerList">
+            <li><a href="">О компании</a></li>
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Новости</a></li>
+            <li><a href="">Медиа</a></li>
+            <li><a href="">Блог</a></li>
+            <li><a href="">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content flex flex-col justify-between h-full">
+          <div class="mobile-content">
+
+         
+          <a
+            href=""
+            class="block lg:hidden md:px-[20px] xl:px-[32px] py-[18px] bg-[#D24A43] text-white font-semibold text-[12px] uppercase rounded-[50px] text-center mb-[25px] border-2 border-[#D24A43] hover:bg-white hover:text-[#D24A43] transition-all duration-500 ease"
+            >Написать нам</a
+          >
+          <ul class="navList flex lg:hidden">
+            <li><a href="">О компании</a></li>
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Новости</a></li>
+            <li><a href="">Медиа</a></li>
+            <li><a href="">Блог</a></li>
+            <li><a href="">Контакты</a></li>
+          </ul>
+
+           </div>
+
+          <div class="bg-[#F4F4F4] py-[30px] px-[25px] block lg:hidden">
+            <div class="flex items-center">
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="30" height="30" rx="15" fill="#77B75F" />
+                <g clip-path="url(#clip0_0_1)">
+                  <path
+                    d="M13.2911 10.6614C13.1467 10.3126 12.7661 10.127 12.4023 10.2264L10.7523 10.6764C10.4261 10.7664 10.1992 11.0626 10.1992 11.4001C10.1992 16.0389 13.9605 19.8001 18.5992 19.8001C18.9367 19.8001 19.233 19.5733 19.323 19.247L19.773 17.597C19.8723 17.2333 19.6867 16.8526 19.338 16.7083L17.538 15.9583C17.2323 15.8308 16.878 15.9189 16.6698 16.1758L15.9123 17.1001C14.5923 16.4758 13.5236 15.407 12.8992 14.087L13.8236 13.3314C14.0805 13.1214 14.1686 12.7689 14.0411 12.4633L13.2911 10.6633V10.6614Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_0_1">
+                    <rect
+                      width="9.6"
+                      height="9.6"
+                      fill="white"
+                      transform="translate(10.1992 10.2002)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <span
+                class="ml-2 flex flex-col justify-center header-callback font-semibold text-[#474747] text-[16px] md:text-[18px] xl:text-[20px]"
+              >
+                <a href="tel:+998972731347"
+                  >+998 97 273 13 47 <span>, </span>
+                </a>
+                <a href="tel:+998934424101">
+                  +998 93 442 41 01 <span> ,</span></a
+                >
+              </span>
+            </div>
+            <div class="flex items-center">
+              <div>
+
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="30" height="30" rx="15" fill="#77B75F"/>
+                <path d="M14.6984 14.7602C14.3859 14.7602 14.0861 14.6338 13.8651 14.4087C13.644 14.1837 13.5199 13.8785 13.5199 13.5602C13.5199 13.2419 13.644 12.9367 13.8651 12.7117C14.0861 12.4866 14.3859 12.3602 14.6984 12.3602C15.011 12.3602 15.3108 12.4866 15.5318 12.7117C15.7528 12.9367 15.877 13.2419 15.877 13.5602C15.877 13.7178 15.8465 13.8738 15.7873 14.0194C15.7281 14.165 15.6413 14.2973 15.5318 14.4087C15.4224 14.5202 15.2924 14.6085 15.1495 14.6689C15.0065 14.7292 14.8532 14.7602 14.6984 14.7602ZM14.6984 10.2002C13.8232 10.2002 12.9839 10.5542 12.365 11.1843C11.7461 11.8144 11.3984 12.6691 11.3984 13.5602C11.3984 16.0802 14.6984 19.8002 14.6984 19.8002C14.6984 19.8002 17.9984 16.0802 17.9984 13.5602C17.9984 12.6691 17.6508 11.8144 17.0319 11.1843C16.413 10.5542 15.5737 10.2002 14.6984 10.2002Z" fill="white"/>
+                </svg>
+              </div>
+
+              <p class="text-[#939393] font-[500] text-[14px] ml-2">
+                г. Ташкент, Яккасарайский р-н, Ш. Руставели 85
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div class="overlay" id="overlay"></div>
+    </header>
+    <main>
+      <!-- 1-section -->
+      <section class="hero relative h-[700px] mt-[106px]">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!-- 1-slide -->
+            <div
+              class="swiper-slide z-0"
+              style="
+                background: url('./img/heroBg.jpg') no-repeat center / cover;
+              "
+            >
+              <div
+                class="absolute w-full h-full z-1"
+                style="
+                  background: linear-gradient(
+                      180deg,
+                      rgba(0, 0, 0, 0.6),
+                      rgba(7, 7, 7, 0) 50%,
+                      rgba(7, 7, 7, 0) 100%
+                    ),
+                    rgba(0, 0, 0, 0.4);
+                "
+              ></div>
+              <div class="container">
+                <div
+                  class="slide-content text-white z-2 relative max-w-[784px]"
+                >
+                  <h2
+                    class="lg:text-[80px] sm:text-[50px] text-[30px] leading-none font-[800] mb-[29px] uppercase"
+                  >
+                    комплексные удобрения
+                  </h2>
+                  <span
+                    class="bg-[#77B75F] w-[110px] h-[6px] lg:h-[12px] inline-block rounded-[10px] mb-[19px]"
+                  ></span>
+                  <p
+                    class="lg:text-[22px] sm:text-[18px] text-[16px] mb-[33px] font-[500]"
+                  >
+                    И средства защиты растений
+                  </p>
+                  <a
+                    href="#"
+                    class="bg-[#77B75F] font-[600] text-[14px] text-white hover:bg-white hover:text-[#77B75F] px-[24px] py-[12px] lg:px-[44px] lg:py-[22px] rounded-[50px] transition-all duration-400 ease uppercase"
+                  >
+                    Подробнее
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- 2-slide -->
+            <div
+              class="swiper-slide z-0"
+              style="
+                background: url('./img/heroBg.jpg') no-repeat center / cover;
+              "
+            >
+              <div
+                class="absolute w-full h-full z-1"
+                style="
+                  background: linear-gradient(
+                      180deg,
+                      rgba(0, 0, 0, 0.6),
+                      rgba(7, 7, 7, 0) 50%,
+                      rgba(7, 7, 7, 0) 100%
+                    ),
+                    rgba(0, 0, 0, 0.4);
+                "
+              ></div>
+              <div class="container">
+                <div
+                  class="slide-content text-white z-2 relative max-w-[784px]"
+                >
+                  <h2
+                    class="lg:text-[80px] sm:text-[50px] text-[30px] leading-none font-[800] mb-[29px] uppercase"
+                  >
+                    комплексные удобрения
+                  </h2>
+                  <span
+                    class="bg-[#77B75F] w-[110px] h-[6px] lg:h-[12px] inline-block rounded-[10px] mb-[19px]"
+                  ></span>
+                  <p
+                    class="lg:text-[22px] sm:text-[18px] text-[16px] mb-[33px] font-[500]"
+                  >
+                    И средства защиты растений
+                  </p>
+                  <a
+                    href="#"
+                    class="bg-[#77B75F] font-[600] text-[12px] text-white hover:bg-white hover:text-[#77B75F] px-[24px] py-[12px] lg:px-[44px] lg:py-[22px] rounded-[50px] transition-all duration-400 ease uppercase"
+                  >
+                    Подробнее
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="swiper-pagination z-5"></div>
+          </div>
+        </div>
+      </section>
+      <!-- 2-section -->
+<section class="relative lg:-top-40 z-2 py-[20px] ">
+  <div class="container">
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-[80px] lg:items-end">
+      
+      <div class="w-full lg:w-[calc(100%-580px)] xl:w-[calc(100%-600px)]  lg:pt-[180px] text-center lg:text-start "> 
+        <h2
+          class="lg:text-[60px] sm:text-[45px] text-[25px] leading-none font-[800] mb-[22px] text-[#474747]"
+        >
+          Профиль компании
+        </h2>
+        <span
+          class="bg-[#77B75F] w-[60px] h-[5px] lg:h-[8px] inline-block rounded-[10px] mb-[12px]"
+        ></span>
+        <p
+          class="lg:text-[20px] sm:text-[18px] text-[16px] mb-[20px] font-[600] text-[#939393] uppercase"
+        >
+          О компании
+        </p>
+        <p
+          class="sm:text-[18px] text-[16px] mb-[31px] font-[500] text-[#474747]"
+        >
+          Несмотря на то, что компания появилась на рынке средств защиты
+          растений нашей республики сравнительно недавно, она уже
+          становится известна широкому кругу покупателей благодаря
+          разнообразному ассортименту высокоэффективной продукции
+          <br /><br />
+          Специалисты нашей компании работают над тем, чтобы наша
+          продукция была высокоэффективной и доступной для покупателей по
+          цене. Благодаря этому предлагаемая нами продукция в короткие
+          сроки находит своего покупателя и укрепляет свои позиции на
+          рынке.
+        </p>
+        <a
+          href="#"
+          class="bg-[#77B75F] border-2 border-[#77B75F] font-[600] text-[12px] text-white hover:bg-white hover:text-[#77B75F] px-[24px] py-[12px] lg:px-[44px] lg:py-[22px] rounded-[50px] transition-all duration-400 ease uppercase"
+        >
+          Подробнее
+        </a>
+      </div>
+      
+      <div class="w-full lg:w-[500px] mt-2 lg:mt-0">
+        <div>
+          <img
+            src="./img/position1.jpg"
+            class="w-full lg:w-[500px] h-[300px] rounded-[20px] mb-5 lg:mb-[30px] object-cover"
+            alt=""
+          />
+        </div>
+
+        <div>
+          <img
+            src="./img/position2.jpg"
+            class="w-full lg:w-[500px] h-[410px] rounded-[20px] object-cover"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+    <footer></footer>
+    <!-- swiperJs -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- main.js -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
