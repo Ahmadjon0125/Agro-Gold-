@@ -81,24 +81,13 @@ mobileNavLinks.forEach((link) => {
 });
 
 // hero Swiper
-  //  var swiper = new Swiper(".mySwiper", {
-  //     spaceBetween: 30,
-  //     pagination: {
-  //       el: ".swiper-pagination",
-  //       clickable: true,
-  //     },
-  //   });
+
 
   const swiper = new Swiper(".swiper", {
   direction: "horizontal",
   loop: true,
-  // autoplay: {
-  //   delay: 15000,
-  // },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+ 
+
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -106,4 +95,53 @@ mobileNavLinks.forEach((link) => {
   effect: "slide",
   speed: 500,
   
+});
+
+// main page gallery fancybox
+
+document.addEventListener('DOMContentLoaded', function () {
+    // 1. ASOSIY SPLIDE SLAYDERINI INITSializatsiya qilish
+    const mainSplide = new Splide('#gallery-main', {
+        type: 'loop',
+        pagination: false,
+        arrows: true, 
+        perPage: 1,
+    });
+    
+    mainSplide.mount();
+
+    // 2. THUMBS RO'YXATIDAN ELEMENTLARNI TANLAB OLISH (Unikal klass: .thumb-item)
+    const thumbItems = document.querySelectorAll('.thumb-item');
+
+    // 3. BOSISH HODISASINI ULASH
+    thumbItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-slide-index'));
+            
+            // Asosiy slayderni tanlangan rasmga o'tkazish
+            mainSplide.go(index); 
+        });
+    });
+
+    // 4. SPLIDE SILJIGANIDA THUMB STILINI YANGILASH
+    mainSplide.on('moved', function (newIndex) {
+        updateActiveThumb(newIndex);
+    });
+    
+    // Faol rasmni yangilash funksiyasi
+    function updateActiveThumb(index) {
+    thumbItems.forEach(item => {
+        // ✅ Yangi klassni o'chirish
+        item.classList.remove('active-line'); 
+    });
+
+    const activeItem = thumbItems[index];
+    if (activeItem) {
+        // ✅ Yangi klassni qo'shish
+        activeItem.classList.add('active-line');
+    }
+}
+    
+    // Boshlang'ich yuklashda faol rasmni belgilash
+    updateActiveThumb(0); 
 });

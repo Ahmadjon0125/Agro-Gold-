@@ -74,12 +74,12 @@ body {
 }
 
 .burger.active {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    padding: 15px;
-    padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 15px;
+  padding-left: 22px;
 }
 
 .burger span {
@@ -149,19 +149,16 @@ body {
     color: #474747;
     font-weight: 500;
     border-bottom: 1px solid #e0e0e0;
-      transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
-    .mobile-nav .navList > li > a:hover {
-color: #77B75F;
+  .mobile-nav .navList > li > a:hover {
+    color: #77b75f;
   }
-
 
   .mobile-nav .navList > li:last-child > a {
     border-bottom: none;
   }
-
-
 
   .mobile-lang {
     padding-top: 15px;
@@ -211,7 +208,6 @@ color: #77B75F;
 .swiper-pagination {
   position: relative;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   bottom: 48px !important;
   left: 0 !important;
@@ -234,6 +230,93 @@ color: #77B75F;
 }
 
 .headerList li a:hover {
-  color: #77B75F;
+  color: #77b75f;
   transition: all 300ms ease;
+}
+
+@media (max-width: 800px) {
+  .swiper-pagination-bullet {
+    margin-right: 20px !important;
+  }
+}
+
+/* Bu klassni siz faol elementga (masalan, .thumb-item.active-line) qo'llasiz */
+.active-line {
+  position: relative; /* ::before uchun ota element bo'lishi shart */
+}
+
+.active-line::before {
+  content: ""; /* JS dagi '""' ga to'g'ri keladi */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-color: rgba(119, 183, 95, 1);
+  z-index: 20;
+  /* CSS da to'g'ridan-to'g'i qo'shish, masalan, 12px yoki 20px bo'lishi mumkin */
+  border-radius: 20px; /* Tailwind 'xl' taxminan 12px bo'lishi mumkin */
+}
+
+.splide__arrow--next {
+  background-color: #000;
+  opacity: 60%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.splide__arrow--prev {
+  background-color: #000;
+  opacity: 40%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.splide__arrow--prev svg {
+  color: #ffffff;
+  fill: #fff;
+}
+
+.splide__arrow--next svg {
+  color: #ffffff;
+  fill: #fff;
+}
+
+.thumb-item:hover{
+transform: scale(1.05) translateX(-5px) translateY(-5px);
+}
+
+/* footer  */
+.fooLink {
+  transition: all 0.4s ease;
+  
+}
+
+.fooLink:hover {
+  background-color: white;
+  transform: scale(1.03) translateY(-5px);
+}
+
+.fooLink > svg path,
+.fooLink > svg rect {
+  transition: fill 0.4s ease;
+}
+
+.fooLink:hover > svg path {
+  fill: #77b75f;
+}
+
+.fooLink:hover > svg rect[fill="rgb(255,255,255)"] {
+  fill: #77b75f;
+}
+
+.fooNav > a {
+  transition: transform 0.4s ease;
+  transform: scale(1) translateY(0);
+
+}
+.fooNav > a:hover {
+  transform: scale(1.03) translateX(-8px);
 }
