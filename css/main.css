@@ -320,3 +320,25 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
 .fooNav > a:hover {
   transform: scale(1.03) translateX(-8px);
 }
+
+
+.isPage {
+  background:
+    /* ✅ 1. Qora rangli Overlay qatlami (Yuqorida turishi shart) */
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    
+    /* 2. Asosiy gradient (Yuqoridan to'qlashtirish uchun) */
+    linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.6),
+        rgba(7, 7, 7, 0) 50%,
+        rgba(7, 7, 7, 0) 100%
+    ),
+    
+    /* 3. Rasm (Eng pastda turishi kerak) */
+    url('../img/heroBg.jpg');
+
+    /* Qo'shimcha stillar (Avvalgi maslahat) */
+    background-size: cover; 
+    background-position: center;
+}
