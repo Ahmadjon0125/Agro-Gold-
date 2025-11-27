@@ -342,3 +342,21 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
     background-size: cover; 
     background-position: center;
 }
+
+.bottomShadow {
+    /* Faqat pastki qismda yaqqol ko'rinadigan soya */
+    box-shadow: 
+        0 4px 6px -6px black; 
+    
+    /* Izoh:
+       0    (Horizontal ofset)
+       8px  (Vertikal ofset - soya pastga 8px siljiydi)
+       6px  (Xiralashish (Blur) - soyani yumshatadi)
+       -6px (Tarqalish (Spread) - soyani cheklaydi, shunda u yuqoriga chiqib ketmaydi)
+       black (Soya rangi - shaffoflikni kamaytirish tavsiya etiladi) 
+    */
+}
+
+.shadowNone {
+  box-shadow: none;
+}
