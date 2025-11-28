@@ -145,3 +145,70 @@ document.addEventListener('DOMContentLoaded', function () {
     // Boshlang'ich yuklashda faol rasmni belgilash
     updateActiveThumb(0); 
 });
+
+
+// show More Btn 
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Kerakli elementlarni ID va Klass bo'yicha olish
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        const cards = document.querySelectorAll('.product-card');
+        
+        // --- Sozlamalar ---
+        const initialVisibleCount = 8;  // Dastlabki ko'rinadigan elementlar soni (4 ta)
+        const cardsPerLoad = 4;         // Har bosilganda qo'shiladigan elementlar soni (4 ta)
+        let visibleCount = initialVisibleCount;
+        // -------------------
+
+        // 1. Dastlabki holatni sozlash: Faqat dastlabki 4 ta elementni ko'rsatish
+        const initializeCards = () => {
+            cards.forEach((card, index) => {
+                // initialVisibleCount dan keyingilarni yashiramiz
+                if (index >= initialVisibleCount) {
+                    // hidden klassini qo'shamiz
+                    card.classList.add('hidden'); 
+                }
+            });
+            
+            // Agar barcha elementlar ko'rinadigan bo'lsa (jami 4 ta bo'lsa), tugmani yashirish
+            if (cards.length <= initialVisibleCount) {
+                if(loadMoreBtn) {
+                   loadMoreBtn.style.display = 'none';
+                }
+            }
+        };
+
+        // 2. Kartochkalarni qo'shish funksiyasi (tugma bosilganda)
+        const loadMoreCards = (e) => {
+            e.preventDefault();
+            
+            let cardsShown = 0;
+            
+            // visibleCount dan boshlab, keyingi 4 ta kartochkani ko'rsatamiz
+            for (let i = visibleCount; i < cards.length && cardsShown < cardsPerLoad; i++) {
+                // 'hidden' klassini olib tashlaymiz
+                cards[i].classList.remove('hidden'); 
+                cardsShown++;
+            }
+            
+            visibleCount += cardsShown; // Ko'rinadigan elementlar sonini yangilaymiz
+
+            // Agar barcha kartochkalar ko'rsatilgan bo'lsa, tugmani yashiramiz
+            if (visibleCount >= cards.length) {
+                if(loadMoreBtn) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+        };
+
+        // Dasturni ishga tushirish
+        initializeCards();
+
+        // Tugma hodisasini ulash
+        if(loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', loadMoreCards);
+        }
+    });
+

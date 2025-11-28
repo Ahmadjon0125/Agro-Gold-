@@ -364,3 +364,22 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
 .categShadow a{
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
 }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 360px) {
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .breadcrumb > span {
+    height: 0;
+    width: 0;
+  }
+}
