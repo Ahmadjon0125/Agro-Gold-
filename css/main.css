@@ -370,6 +370,11 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
   align-items: center;
 }
 
+ .tabButtons {
+    display: flex;
+    align-items: center;
+  }
+
 @media (max-width: 360px) {
   .breadcrumb {
     display: flex;
@@ -381,6 +386,15 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
   .breadcrumb > span {
     height: 0;
     width: 0;
+  }
+
+  .tabButtons {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 13px;
   }
 }
 

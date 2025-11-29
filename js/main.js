@@ -259,3 +259,131 @@ document.addEventListener('DOMContentLoaded', function () {
             loadMoreBtn.addEventListener('click', loadMoreItems);
         }
     });
+
+
+
+    // media qism
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    // Default holatda birinchi tabni faollashtirish
+    const initialActiveTabId = 'photo-tab'; // Dastlabki faol tab ID'si
+    const initialActiveTabButton = document.getElementById(initialActiveTabId);
+    
+    // Faol tab tugmasining stilini o'rnatish
+    if (initialActiveTabButton) {
+      initialActiveTabButton.classList.add('bg-[#77B75F]', 'text-white');
+      initialActiveTabButton.classList.remove('bg-gray-100', 'text-gray-800'); // Faol bo'lmagan stilni olib tashlash
+    }
+
+    // Dastlabki tab kontentini ko'rsatish
+    const initialTabPaneId = initialActiveTabButton ? initialActiveTabButton.dataset.tab : null;
+    if (initialTabPaneId) {
+      document.getElementById(initialTabPaneId).classList.remove('hidden');
+    }
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Barcha tab tugmalarini faolsizlantirish
+        tabButtons.forEach(btn => {
+          btn.classList.remove('bg-[#77B75F]', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-800');
+        });
+
+        // Barcha tab kontentlarini yashirish
+        tabPanes.forEach(pane => {
+          pane.classList.add('hidden');
+        });
+
+        // Bosilgan tabni faollashtirish
+        button.classList.add('bg-[#77B75F]', 'text-white');
+        button.classList.remove('bg-gray-100', 'text-gray-800');
+
+        // Tegishli kontentni ko'rsatish
+        const targetTabId = button.dataset.tab;
+        document.getElementById(targetTabId).classList.remove('hidden');
+      });
+    });
+
+    // Sahifa yuklanganda birinchi tabni faollashtirish uchun
+    // Agar dastlabki activeTabButton mavjud bo'lsa, uni bosishni simulyatsiya qilamiz
+    // Bu JS boshlanishda tablar to'g'ri ko'rinishini ta'minlaydi
+    if (initialActiveTabButton) {
+        initialActiveTabButton.click();
+    }
+  });
+
+
+
+//   video uchun
+
+
+ document.addEventListener('DOMContentLoaded', function() {
+    // === DOM Elementlarini Tanlash ===
+    const mainMediaElement = document.getElementById('main-media-element');
+    const mainTitle = document.getElementById('main-title');
+    const mainDescription = document.getElementById('main-description');
+    const mainMediaLink = document.getElementById('main-media-link');
+    const thumbnails = document.querySelectorAll('.media-thumbnail');
+
+    // === FancyBox ni ishga tushirish ===
+    // Bu asosiy link (mainMediaLink) bosilganda modalni ochish uchun muhim.
+    if (typeof Fancybox !== 'undefined') {
+        Fancybox.bind('#main-media-link', { // Yoki '[data-fancybox="main-media"]'
+            // FancyBox sozlamalari
+            Toolbar: false, // Asboblar panelini yashirish (ixtiyoriy)
+            closeButton: "top",
+            // Agar video ijro etilmasa, 'Video' obyektini sozlash kerak bo'lishi mumkin.
+        });
+    }
+
+
+    // === Ma'lumotlarni almashtirish funksiyasi ===
+    function updateMainMedia(newMediaUrl, newTitle, newDescription, newPoster) {
+        
+        // 1. Asosiy linkni (FancyBox manbasini) yangilash
+        if (mainMediaLink) {
+            // FancyBox bu linkni modalda ochadi
+            mainMediaLink.href = newMediaUrl; 
+        }
+
+        // 2. Asosiy sarlavha va matnni yangilash
+        if (mainTitle) mainTitle.textContent = newTitle;
+        if (mainDescription) mainDescription.textContent = newDescription;
+
+        // 3. Asosiy poster rasmini yangilash
+        if (mainMediaElement) {
+            mainMediaElement.src = newPoster;
+            mainMediaElement.alt = newTitle + " posteri";
+        }
+    }
+
+    // === Thumbnail click hodisasi ===
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function(event) {
+            event.preventDefault(); // Kichik linkni bosganda modal ochilmasligi uchun
+
+            // Data atributlardan yangi ma'lumotlarni olish
+            const newMediaUrl = this.dataset.mediaUrl;
+            const newTitle = this.dataset.title;
+            const newDescription = this.dataset.description;
+            const newPoster = this.dataset.poster;
+
+            // Asosiy elementlarni yangilash funksiyasini chaqirish
+            updateMainMedia(newMediaUrl, newTitle, newDescription, newPoster);
+        });
+    });
+
+    // === Dastlabki yuklanish ===
+    if (thumbnails.length > 0) {
+        const firstThumbnail = thumbnails[0];
+        updateMainMedia(
+            firstThumbnail.dataset.mediaUrl,
+            firstThumbnail.dataset.title,
+            firstThumbnail.dataset.description,
+            firstThumbnail.dataset.poster
+        );
+    }
+});
