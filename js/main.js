@@ -212,3 +212,50 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const newsItems = document.querySelectorAll('.news-item');
+        const loadMoreBtn = document.getElementById('load-more');
+        const itemsPerLoad = 3; // Har bosilganda yuklanadigan elementlar soni
+        let currentItemIndex = 0; // Yuklashni 0-elementdan boshlaymiz
+
+        // Elementni ko'rinadigan qilish uchun funksiya
+        function showItem(item) {
+            // display: none ni bekor qilish. Grid itemlari odatda display: block bo'ladi
+            item.style.display = 'block'; 
+        }
+
+        // Yuklash funksiyasi
+        function loadMoreItems() {
+            const endIndex = currentItemIndex + itemsPerLoad;
+            let loadedCount = 0;
+
+            for (let i = currentItemIndex; i < endIndex && i < newsItems.length; i++) {
+                showItem(newsItems[i]);
+                loadedCount++;
+            }
+            
+            currentItemIndex = endIndex;
+            updateButtonVisibility();
+        }
+
+        // Tugmani boshqarish funksiyasi
+        function updateButtonVisibility() {
+            if (currentItemIndex >= newsItems.length) {
+                // Barcha yangiliklar yuklangan bo'lsa, tugmani yashiramiz
+                loadMoreBtn.style.display = 'none'; 
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
+        }
+
+        // Sahifa yuklanganda:
+        // 1. Dastlabki 3 ta elementni yuklash
+        loadMoreItems();
+
+        // 2. Tugmaga hodisa tinglovchisini qo'shish
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', loadMoreItems);
+        }
+    });

@@ -383,3 +383,8 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
     width: 0;
   }
 }
+
+
+.news-item {
+        display: none;
+    }
