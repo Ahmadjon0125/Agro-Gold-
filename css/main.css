@@ -396,9 +396,17 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
     text-align: center;
     gap: 13px;
   }
+
+
 }
 
 
 .news-item {
         display: none;
     }
+
+@media (max-width: 400px) {
+    .categGrid {
+    grid-template-columns: 1fr;
+  }
+}
