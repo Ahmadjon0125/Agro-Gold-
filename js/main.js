@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('DOMContentLoaded', function() {
         const newsItems = document.querySelectorAll('.news-item');
         const loadMoreBtn = document.getElementById('load-more');
-        const itemsPerLoad = 3; // Har bosilganda yuklanadigan elementlar soni
+        const itemsPerLoad = 6; // Har bosilganda yuklanadigan elementlar soni
         let currentItemIndex = 0; // Yuklashni 0-elementdan boshlaymiz
 
         // Elementni ko'rinadigan qilish uchun funksiya
