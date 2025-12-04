@@ -410,3 +410,39 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
     grid-template-columns: 1fr;
   }
 }
+
+
+/* * 💡 Active holati uchun zaruriy CSS qismi. 
+ * Endi barcha selectorlar toza va yangi klass nomlari bilan ishlaydi.
+ */
+
+/* Faol thumbnail uchun overlayni ko'rsatish */
+.media-thumbnail.is-active-media .media-overlay {
+    display: block !important; 
+}
+
+/* Faol thumbnail uchun Play tugmasini ko'rsatish, uni markazlashtirish va joylashishini o'rnatish */
+.media-thumbnail.is-active-media .media-play-icon-wrapper {
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+}
+
+/* Faol thumbnail sarlavhasi rangini o'zgartirish */
+.media-thumbnail.is-active-media .media-title-text {
+    color: #77B75F !important; 
+}
+
+/* Faol bo'lmaganida matnni asl rangiga tiklash */
+.media-thumbnail:not(.is-active-media) .media-title-text {
+    color: #474747 !important; 
+}
+
+.media-thumbnail:hover .media-title-text {
+    color: #77B75F !important; 
+}
+
+
+
+
+

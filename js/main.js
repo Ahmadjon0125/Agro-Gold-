@@ -319,59 +319,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //   video uchun
 
-
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // === DOM Elementlarini Tanlash ===
     const mainMediaElement = document.getElementById('main-media-element');
     const mainTitle = document.getElementById('main-title');
     const mainDescription = document.getElementById('main-description');
     const mainMediaLink = document.getElementById('main-media-link');
-    const thumbnails = document.querySelectorAll('.media-thumbnail');
-
+    const thumbnails = document.querySelectorAll('.media-thumbnail'); // media-thumbnail toza klass
+    
     // === FancyBox ni ishga tushirish ===
-    // Bu asosiy link (mainMediaLink) bosilganda modalni ochish uchun muhim.
     if (typeof Fancybox !== 'undefined') {
-        Fancybox.bind('#main-media-link', { // Yoki '[data-fancybox="main-media"]'
-            // FancyBox sozlamalari
-            Toolbar: false, // Asboblar panelini yashirish (ixtiyoriy)
+        Fancybox.bind('#main-media-link', {
+            Toolbar: false,
             closeButton: "top",
-            // Agar video ijro etilmasa, 'Video' obyektini sozlash kerak bo'lishi mumkin.
+         
         });
     }
 
-
     // === Ma'lumotlarni almashtirish funksiyasi ===
     function updateMainMedia(newMediaUrl, newTitle, newDescription, newPoster) {
-        
-        // 1. Asosiy linkni (FancyBox manbasini) yangilash
-        if (mainMediaLink) {
-            // FancyBox bu linkni modalda ochadi
-            mainMediaLink.href = newMediaUrl; 
-        }
-
-        // 2. Asosiy sarlavha va matnni yangilash
+        if (mainMediaLink) mainMediaLink.href = newMediaUrl; 
         if (mainTitle) mainTitle.textContent = newTitle;
         if (mainDescription) mainDescription.textContent = newDescription;
-
-        // 3. Asosiy poster rasmini yangilash
         if (mainMediaElement) {
             mainMediaElement.src = newPoster;
             mainMediaElement.alt = newTitle + " posteri";
         }
     }
 
+    // === Faol (Active) stillarni boshqaruvchi funksiya (FAAQAT TOZA KLASS) ===
+    function manageActiveStyles(targetThumbnail, isActive) {
+        // 💡 Faqat yagona, toza 'is-active-media' klassini qo'shish yoki olib tashlash
+        // Barcha stillar CSS ichida shu klassga bog'langan.
+        targetThumbnail.classList.toggle('is-active-media', isActive);
+    }
+
     // === Thumbnail click hodisasi ===
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', function(event) {
-            event.preventDefault(); // Kichik linkni bosganda modal ochilmasligi uchun
+            event.preventDefault(); 
+            
+            // 1. Oldingi barcha elementlarni de-active qilish
+            thumbnails.forEach(t => manageActiveStyles(t, false));
+            
+            // 2. Joriy elementni active qilish
+            manageActiveStyles(this, true);
 
-            // Data atributlardan yangi ma'lumotlarni olish
+            // 3. Asosiy ma'lumotlarni yangilash
             const newMediaUrl = this.dataset.mediaUrl;
             const newTitle = this.dataset.title;
             const newDescription = this.dataset.description;
-            const newPoster = this.dataset.poster;
+            
+            // 💡 Poster manbasini yangi, toza klass orqali chaqirish
+            const thumbnailImage = this.querySelector('.media-poster-source');
+            const newPoster = thumbnailImage ? thumbnailImage.src : ''; 
 
-            // Asosiy elementlarni yangilash funksiyasini chaqirish
             updateMainMedia(newMediaUrl, newTitle, newDescription, newPoster);
         });
     });
@@ -379,11 +381,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // === Dastlabki yuklanish ===
     if (thumbnails.length > 0) {
         const firstThumbnail = thumbnails[0];
+        
+        // Dastlabki elementni active qilish
+        manageActiveStyles(firstThumbnail, true);
+        
+        // 💡 Dastlabki poster manbasini yangi, toza klass orqali chaqirish
+        const firstThumbnailImage = firstThumbnail.querySelector('.media-poster-source');
+        const firstPoster = firstThumbnailImage ? firstThumbnailImage.src : '/img/categoryBg.jpg'; 
+
         updateMainMedia(
             firstThumbnail.dataset.mediaUrl,
             firstThumbnail.dataset.title,
             firstThumbnail.dataset.description,
-            firstThumbnail.dataset.poster
+            firstPoster
         );
     }
 });
