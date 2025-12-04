@@ -397,3 +397,24 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 });
+
+
+
+    // modal 
+
+const modal = document.getElementById("modalOverlay");
+const openButtons = document.querySelectorAll(".openModal");
+
+// Har bir buttonni modalga ulab chiqamiz
+openButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+});
+
+// Fonga bosganda yopiladi
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

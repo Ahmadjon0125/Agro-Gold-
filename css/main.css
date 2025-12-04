@@ -412,6 +412,7 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
 }
 
 
+
 /* * 💡 Active holati uchun zaruriy CSS qismi. 
  * Endi barcha selectorlar toza va yangi klass nomlari bilan ishlaydi.
  */
@@ -446,3 +447,70 @@ transform: scale(1.05) translateX(-5px) translateY(-5px);
 
 
 
+/* modal  */
+/* Modal o'chirilgan holat */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Modal oynasi */
+.modalBox {
+  width: 800px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+
+
+/* Forma */
+.modalForm input,
+.modalForm textarea {
+  width: 100%;
+  background-color: #F4F4F4;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+::placeholder {
+  color: #474747;
+}
+
+.modalForm textarea {
+  height: 100px;
+  resize: none;
+}
+
+.sendBtn {
+  background: #77B75F;
+  color: white;
+  padding: 12px 35px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  float: right;
+}
+
+/* Animatsiya */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
